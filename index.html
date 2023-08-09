@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    
+    <title>ROI</title>
+</head>
+<body>
+    <header>
+        <img src = 'Whatfix_logo.png' height="30px" width="auto">
+    </header>
+
+    <div class="container">
+        <form action="" id="section1">
+            <h3>Basic Information</h3>
+                <div class="inputBox">
+                    <input type="email" required>
+                    <span>Email Address</span>
+                </div> <br />
+                <div class="inputBox">
+                    <input type="text" required>
+                    <span>Company</span>
+                </div> <br />
+                <div class="inputBox">
+                    <input type="text" required>
+                    <span>Designation</span>
+                </div>
+
+                <div class="btn-box">
+                    <button type="button" id="Next1">
+                        Next
+                    </button>
+                </div>
+        </form>
+
+        <form action="" id="section2" class="not_apply">
+            <h3 style="text-align: left">How would you best describe your expertise with Digital Adoption Platforms?</h3>
+             <div class="expertise">
+                 <br/>
+                    <input type="radio" name="q1" value="113672">  Using it in my current organization <br/><br />
+                    <input type="radio" name="q1" value="113672">  Used it in my previous organization <br/><br />
+                    <input type="radio" name="q1" value="113672">  Limited understanding of DAP <br/><br />
+                    <input type="radio" name="q1" value="113672">  Currently researching about DAP <br/><br />
+                    <input type="radio" name="q1" value="113672">  Not aware of digital adoption platforms <br/><br />
+                <br>
+             </div>
+            
+             <div class="btn-box">
+                <button type="button" id="Back1">
+                    Previous
+                </button>
+                <button type="button" id="Next2">
+                    Next
+                </button>
+            </div>
+        </form>
+
+        <form action="" id="section3">
+            
+            <h4>Select an application category that might be relevant to you:</h4>
+            <div class="question_re">
+                <select name="q2" id="q2" onchange="showInputBox();">
+                  <option value="moderate">CMS (WordPress,Appie Pie Website Builder,Hubspot CMS Hub)</option>
+                  <option value="moderate">CRM (Salesforce,SAP, Oracle, Microsoft Dynamics)</option>
+                  <option value="moderate">ERP (Oracle NetSuite,SAP ECC, Delteck CostPoint)</option>
+                  <option value="moderate">HCM (Zoho People, Darwinbox, factorHR)</option>
+                  <option value="moderate">HRIS (ADP, Namely, BambooHR)</option>
+                  <option value="moderate">ITSM (Jira, Zendesk, ServiceNow)</option>
+                  <option value="moderate">HRMS (SAP Success Factor, Workday, ADP)</option>
+                  <option value="moderate">EMS (TMW Suite, Responder 360)</option>
+                  <option value="moderate">POS (Clover, LightSpeed, Shopify)</option>
+                  <option value="moderate">EMR (Epic, Meditech, NextGen)</option>
+                  <option value="moderate">SAOS (Ceina Software)</option>
+                  <option value="moderate">BSS (Oracle Support, Ericsson Digital BSS, NetCracker Avenue)</option>
+                  <option value="moderate">LMS (Talent LMS, Adobe Learning Manager,360 Learning)</option>
+                  <option value="moderate">DMS (Adobe Documnet CLoud, PaperSave,Zoho)</option>
+                  <option value="moderate">Project Management (Asana, Trello, Jira)</option>
+                  <option value="moderate">Collaborations (Slack, Confluence)</option>
+                  <option value="other">Other</option>
+                </select><br>
+                <div id="otherInput" style="display: none;">
+                    <input type="text" id="otherValue" placeholder="Enter your choice" onblur="updateOption();">
+                </div>
+            </div>
+
+            <h4>Which region are you looking to deploy with the Whatfix Digital Adoption Platform?</h4>
+            <div class="question_re">
+                <select name="q3">
+                    <option value="8">Global</option>
+                    <option value="12">North America</option>
+                    <option value="18">South America</option>
+                    <option value="18">Europe</option>
+                    <option value="18">Australia/ New Zealand</option>
+                    <option value="18">Southeast Asia</option>
+                    <option value="18">South Asia</option>
+                    <option value="18">Middle East/ Africa</option>
+                </select><br>
+            </div>
+
+            <h4>How many end users do you have for this application?</h4>
+            <div class="slider-area">
+                <button type="button" class="slideButtonNegative" onclick="decreaseSliderValue()">-</button>
+                <input class="mainSlider" type="range" name="slider" id="slider" min="0" max="50000" step="1" value="500"
+                style="margin-left: 0px;">
+                <button type="button" class="slideButtonPositive" onclick="increaseSliderValue()">+</button>
+            </div>
+            <span id="slider-value">500</span><br>
+            
+        
+            <div class="btn-box">
+                <button type="button" id="Back2">
+                    Previous
+                </button>
+                <button type="button" id="Next3">
+                    Next
+                </button>
+            </div>
+        </form>
+
+        <form action="" id="section4" class="not_apply">
+            <h3>Select the impact areas for your organization:</h3>
+            <input type="checkbox" name="q4" value="113672"> Quickly onboard and train the end users on the application <br /><br />
+            <input type="checkbox" name="q4" value="13778"> Communicate the change in the process, application feature etc. to the end users and help them adopt to it <br /><br />
+            <input type="checkbox" name="q4" value="54252"> Reduce the time to go-live for the end users and help them contribute to the organisation <br /><br />
+            <input type="checkbox" name="q4" value="18084"> Deflect the queries and optimize the time take to resolve them <br /><br />
+            <input type="checkbox" name="q4" value="86418"> Reduce effort to create support and training material for the end users to understand the application <br /><br />
+            <input type="checkbox" name="q4" value="14598"> Optimize efforts to translate the support/enablement content from English to other languages <br />
+
+            <div class="btn-box">
+                <button type="button" id="Back3">
+                    Previous
+                </button>
+                <button class="btn" type="submit">
+                    Submit
+                </button>
+            </div>
+        </form>
+
+        <div class="step-row">
+            <div id="progress">
+                
+            </div>
+            <div class="step-col">
+                <small>Step 1</small>
+            </div>
+            <div class="step-col">
+                <small>Step 2</small>
+            </div>
+            <div class="step-col">
+                <small>Step 3</small>
+            </div>
+            <div class="step-col">
+                <small>Step 4</small>
+            </div>
+        </div>
+
+        <!--<div class="section hidden" id="result">
+            <h2>Final Result:</h2>
+            <p id="final-value"></p>
+          </div>
+        </div>-->
+
+    </div>
+
+    <script>
+        var Form1 = document.getElementById("section1");
+        var Form2 = document.getElementById("section2");
+        var Form3 = document.getElementById("section3");
+        var Form4 = document.getElementById("section4");
+
+        var Next1 = document.getElementById("Next1");
+        var Next2 = document.getElementById("Next2");
+        var Next3 = document.getElementById("Next3");
+        var Back1 = document.getElementById("Back1");
+        var Back2 = document.getElementById("Back2");
+        var Back3 = document.getElementById("Back3");
+
+        var progress = document.getElementById("progress");
+
+
+        let popup = document.getElementById("popup");
+
+        function openPopup() {
+            popup.classList.add("open-popup");
+        }
+
+        function closePopup() {
+            popup.classList.remove("open-popup");
+        }
+
+        Next1.onclick = function() {
+            Form1.style.left = "-700px";
+            Form2.style.left = "40px";
+            progress.style.width = "240px";
+        }
+
+        Back1.onclick = function() {
+            Form1.style.left = "40px";
+            Form2.style.left = "700px";
+            progress.style.width = "120px";
+        }
+
+        Next2.onclick = function() {
+            Form2.style.left = "-700px";
+            Form3.style.left = "40px";
+            progress.style.width = "360px";
+        }
+
+        Back2.onclick = function() {
+            Form2.style.left = "40px";
+            Form3.style.left = "700px";
+            progress.style.width = "240px";
+        }
+
+        Next3.onclick = function() {
+            Form3.style.left = "-700px";
+            Form4.style.left = "40px";
+            progress.style.width = "500px";
+        }
+
+        Back3.onclick = function() {
+            Form3.style.left = "40px";
+            Form4.style.left = "700px";
+            progress.style.width = "360px";
+        }
+
+        function showInputBox() {
+    var selectElement = document.getElementById("q2");
+    var inputBox = document.getElementById("otherInput");
+
+    if (selectElement.value === "other") {
+        inputBox.style.display = "block";
+    } else {
+        inputBox.style.display = "none";
+    }
+}
+
+function updateOption() {
+    var selectElement = document.getElementById("q2");
+    var inputBox = document.getElementById("otherValue");
+    var otherOption = document.querySelector('option[value="other"]');
+
+    if (inputBox.value.trim() !== "") {
+        otherOption.textContent = inputBox.value;
+        otherOption.value = inputBox.value;
+        selectElement.value = inputBox.value;
+    } else {
+        otherOption.textContent = "others";
+        otherOption.value = "other";
+        selectElement.value = "other";
+    }
+
+    inputBox.value = ""; // Clear the input field
+    inputBox.style.display = "none";
+    showInputBox(); // Hide the input box
+}
+        
+
+        const form = document.getElementById('section4');
+        const resultDiv = document.getElementById('result');
+        const finalValue = document.getElementById('final-value');
+        const slider = document.getElementById('slider');
+        const sliderValueDisplay = document.getElementById('slider-value');
+
+        slider.addEventListener('input', function() {
+    sliderValueDisplay.textContent = slider.value;
+    });
+
+        function increaseSliderValue() {
+        if (parseInt(slider.value) < parseInt(slider.max)) {
+            slider.value = parseInt(slider.value) + parseInt(slider.step);
+            updateSliderValueDisplay();
+        }
+        }
+
+        function decreaseSliderValue() {
+        if (parseInt(slider.value) > parseInt(slider.min)) {
+            slider.value = parseInt(slider.value) - parseInt(slider.step);
+            updateSliderValueDisplay();
+        }
+        }
+
+        function updateSliderValueDisplay() {
+        sliderValueDisplay.textContent = slider.value;
+        }
+
+        // Initial value display
+        updateSliderValueDisplay();
+
+        form.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+
+
+
+        // Assign weights to the options
+        const weights = {
+            //'q1': 2, // Weight for Question 1
+            //'q2': 3, // Weight for Question 2
+            //'q3': 4, // Weight for Question 2
+            'q4': 0, // Weight for Question 2
+            // ...add more weights as needed...
+        };
+
+        const selectedOptions = form.querySelectorAll('input:checked');
+        let totalValue = 0;
+
+        selectedOptions.forEach(option => {
+            const weight = weights[option.name] || 1; // Default weight if not defined
+            totalValue += weight * parseInt(option.value) * 0.75 * 1; //two constant can be later converted to variables
+        });
+
+        //resultDiv.classList.remove('hidden');
+        //finalValue.textContent = `Your calculated value is: ${totalValue}`;
+
+
+        const formattedValue = formatValue(totalValue);
+
+        alert(`Your calculated value is: $${formattedValue}`);
+
+        //resultDiv.classList.remove('hidden');
+        //finalValue.textContent = `Your calculated value is: $${formattedValue}`;
+
+    });
+
+    function formatValue(value) {
+        if (value >= 1000) {
+            return (value / 1000).toFixed(1) + 'K';
+        } else {
+            return value.toFixed(0);
+        }
+    }
+
+    </script>
+</body>
+</html>
