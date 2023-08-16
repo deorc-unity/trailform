@@ -16,15 +16,15 @@
         <form action="" id="section1">
             <h3>Basic Information</h3>
                 <div class="inputBox">
-                    <input type="email" required>
-                    <span>Email Address</span>
+                    <input type="text" id="email" required>
+                    <span>Email</span>
                 </div> <br />
                 <div class="inputBox">
-                    <input type="text" required>
+                    <input type="text" id="company" required>
                     <span>Company</span>
                 </div> <br />
                 <div class="inputBox">
-                    <input type="text" required>
+                    <input type="text" id="designation" required>
                     <span>Designation</span>
                 </div>
 
@@ -87,23 +87,23 @@
 
             <h4>Which region are you looking to deploy with the Whatfix Digital Adoption Platform?</h4>
             <div class="question_re">
-                <select name="q3">
-                    <option value="8">Global</option>
-                    <option value="12">North America</option>
-                    <option value="18">South America</option>
-                    <option value="18">Europe</option>
-                    <option value="18">Australia/ New Zealand</option>
-                    <option value="18">Southeast Asia</option>
-                    <option value="18">South Asia</option>
-                    <option value="18">Middle East/ Africa</option>
+                <select id="q3">
+                    <option value="18.46068">Global</option>
+                    <option value="34.44602">Americas</option>
+                    <!--<option value="34.44602">South America</option>-->
+                    <option value="22.23352">Europe</option>
+                    <option value="23.41193">Australia/ New Zealand</option>
+                    <option value="8.87784">Southeast Asia</option>
+                    <option value="3.12898">India</option>
+                    <!--<option value="8.87784">Middle East/ Africa</option>-->
                 </select><br>
             </div>
 
             <h4>How many end users do you have for this application?</h4>
             <div class="slider-area">
                 <button type="button" class="slideButtonNegative" onclick="decreaseSliderValue()">-</button>
-                <input class="mainSlider" type="range" name="slider" id="slider" min="0" max="50000" step="1" value="500"
-                style="margin-left: 0px;">
+                <input class="mainSlider" type="range" name="slider" id="slider" min="0" max="50000" step="500" value="500"
+                style="margin-left: 0px ;">
                 <button type="button" class="slideButtonPositive" onclick="increaseSliderValue()">+</button>
             </div>
             <span id="slider-value">500</span><br>
@@ -121,12 +121,12 @@
 
         <form action="" id="section4" class="not_apply">
             <h3>Select the impact areas for your organization:</h3>
-            <input type="checkbox" name="q4" value="113672"> Quickly onboard and train the end users on the application <br /><br />
-            <input type="checkbox" name="q4" value="13778"> Communicate the change in the process, application feature etc. to the end users and help them adopt to it <br /><br />
-            <input type="checkbox" name="q4" value="54252"> Reduce the time to go-live for the end users and help them contribute to the organisation <br /><br />
-            <input type="checkbox" name="q4" value="18084"> Deflect the queries and optimize the time take to resolve them <br /><br />
-            <input type="checkbox" name="q4" value="86418"> Reduce effort to create support and training material for the end users to understand the application <br /><br />
-            <input type="checkbox" name="q4" value="14598"> Optimize efforts to translate the support/enablement content from English to other languages <br />
+            <input type="checkbox" name="q4" value="6.6"> Quickly onboard and train the end users on the application <br /><br />
+            <input type="checkbox" name="q4" value="0.8"> Communicate the change in the process, application feature etc. to the end users and help them adopt to it <br /><br />
+            <input type="checkbox" name="q4" value="3.15"> Reduce the time to go-live for the end users and help them contribute to the organisation <br /><br />
+            <input type="checkbox" name="q4" value="525"> Deflect the queries and optimize the time take to resolve them <br /><br />
+            <input type="checkbox" name="q4" value="2508.8"> Reduce effort to create support and training material for the end users to understand the application <br /><br />
+            <input type="checkbox" name="q4" value="14598.08"> Optimize efforts to translate the support/enablement content from English to other languages <br />
 
             <div class="btn-box">
                 <button type="button" id="Back3">
@@ -165,6 +165,11 @@
     </div>
 
     <script>
+        const emailValid = document.getElementById('email');
+        const designationValid = document.getElementById('designation');
+        const companyValid = document.getElementById('company');
+
+
         var Form1 = document.getElementById("section1");
         var Form2 = document.getElementById("section2");
         var Form3 = document.getElementById("section3");
@@ -179,8 +184,13 @@
 
         var progress = document.getElementById("progress");
 
-
         let popup = document.getElementById("popup");
+
+        let messages = [];
+
+        if(emailValid.value==='' || emailValid.value==null){
+            messages.push('Email is required');
+        }
 
         function openPopup() {
             popup.classList.add("open-popup");
@@ -238,24 +248,33 @@
 }
 
 function updateOption() {
-    var selectElement = document.getElementById("q2");
-    var inputBox = document.getElementById("otherValue");
-    var otherOption = document.querySelector('option[value="other"]');
+        var selectElement = document.getElementById("q2");
+        var inputBox = document.getElementById("otherValue");
+        var otherOption = document.querySelector('option[value="other"]');
 
-    if (inputBox.value.trim() !== "") {
-        otherOption.textContent = inputBox.value;
-        otherOption.value = inputBox.value;
-        selectElement.value = inputBox.value;
-    } else {
-        otherOption.textContent = "others";
-        otherOption.value = "other";
-        selectElement.value = "other";
+        if (inputBox.value.trim() !== "") {
+            otherOption.textContent = inputBox.value;
+            otherOption.value = inputBox.value;
+            selectElement.value = inputBox.value;
+        } else {
+            otherOption.textContent = "others";
+            otherOption.value = "other";
+            selectElement.value = "other";
+        }
+
+        inputBox.value = ""; // Clear the input field
+        inputBox.style.display = "none";
+        showInputBox(); // Hide the input box
+
     }
 
-    inputBox.value = ""; // Clear the input field
-    inputBox.style.display = "none";
-    showInputBox(); // Hide the input box
-}
+    var inputBox = document.getElementById("otherValue");
+    inputBox.addEventListener("keydown", function(event) {
+        if (event.key === "Enter") {
+            event.preventDefault(); // Prevent default Enter key behavior
+            updateOption(); // Call your updateOption function
+        }
+    });
         
 
         const form = document.getElementById('section4');
@@ -263,10 +282,30 @@ function updateOption() {
         const finalValue = document.getElementById('final-value');
         const slider = document.getElementById('slider');
         const sliderValueDisplay = document.getElementById('slider-value');
+        //const selectElement = document.getElementById("q3");
+        //const selectedValue = parseFloat(selectElement.value);
 
-        slider.addEventListener('input', function() {
-    sliderValueDisplay.textContent = slider.value;
+        //const selectElement = document.getElementById('q3');
+        //const selectedOption = selectElement.options[selectElement.selectedIndex];
+        //const selectedValue = selectedOption.value;
+
+        
+
+    let selectedValue = 18.46068; // Declare a variable outside the event listener
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const SelectElement = document.getElementById("q3");
+
+        SelectElement.addEventListener("change", () => {
+            const SelectedValue = SelectElement.value;
+            const SelectedFloatValue = parseFloat(SelectedValue);
+
+            selectedValue = SelectedFloatValue;
+        });
     });
+
+// Now you can use `storedSelectedValue` outside the event listener
+console.log("Stored Selected Value:", selectedValue);
 
         function increaseSliderValue() {
         if (parseInt(slider.value) < parseInt(slider.max)) {
@@ -286,52 +325,71 @@ function updateOption() {
         sliderValueDisplay.textContent = slider.value;
         }
 
+        slider.addEventListener("input", updateSliderValueDisplay);
+        
         // Initial value display
         updateSliderValueDisplay();
 
         form.addEventListener('submit', function(event) {
         event.preventDefault();
 
-
+        console.log('Number of Employees: '+slider.value);
+        console.log('Region Value: '+selectedValue);
 
 
         // Assign weights to the options
         const weights = {
             //'q1': 2, // Weight for Question 1
             //'q2': 3, // Weight for Question 2
-            //'q3': 4, // Weight for Question 2
+            'q3': 0, // Weight for Question 2
             'q4': 0, // Weight for Question 2
             // ...add more weights as needed...
         };
 
         const selectedOptions = form.querySelectorAll('input:checked');
-        let totalValue = 0;
 
-        selectedOptions.forEach(option => {
-            const weight = weights[option.name] || 1; // Default weight if not defined
-            totalValue += weight * parseInt(option.value) * 0.75 * 1; //two constant can be later converted to variables
-        });
+        let checkedValue = 0;
+
+        selectedOptions.forEach(checkbox => {
+            if(parseInt(checkbox.value) == 6) {
+                checkedValue += (6.6 * selectedValue * parseInt(slider.value));
+            } else if(parseInt(checkbox.value) == 0) {
+                checkedValue += (0.8 * selectedValue * parseInt(slider.value));
+            } else if(parseInt(checkbox.value) == 3) {
+                checkedValue += (3.25 * selectedValue * parseInt(slider.value));
+            } else if(parseInt(checkbox.value) == 525) {
+                checkedValue += (525 * selectedValue);
+            } else if(parseInt(checkbox.value) == 2508) {
+                checkedValue += (2508.8 * selectedValue);
+            } else {
+                checkedValue += 14598.08;
+            }
+        })
+
+        let totalValue = 0;
+        totalValue += checkedValue * 0.75 * 1.5
+
 
         //resultDiv.classList.remove('hidden');
         //finalValue.textContent = `Your calculated value is: ${totalValue}`;
 
+        const company_ = document.getElementById('company');
+        const designation_ = document.getElementById('designation');
 
-        const formattedValue = formatValue(totalValue);
+        //const roundedValue = Math.round(totalValue);
+        const roundedValue = Math.round(totalValue / 100) * 100;
 
-        alert(`Your calculated value is: $${formattedValue}`);
+
+        const formattedValue = roundedValue.toLocaleString();
+
+        alert(`Company: ${company_.value}\n
+Designation: ${designation_.value}\n
+Your calculated value is: $${formattedValue}`);
 
         //resultDiv.classList.remove('hidden');
         //finalValue.textContent = `Your calculated value is: $${formattedValue}`;
 
     });
-
-    function formatValue(value) {
-        if (value >= 1000) {
-            return (value / 1000).toFixed(1) + 'K';
-        } else {
-            return value.toFixed(0);
-        }
-    }
 
     </script>
 </body>
